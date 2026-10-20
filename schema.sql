@@ -1,0 +1,23 @@
+CREATE TABLE Students (
+  StudentID INTEGER PRIMARY KEY,
+  Name TEXT NOT NULL,
+  YearLevel INTEGER NOT NULL CHECK (YearLevel BETWEEN 9 AND 13)
+);
+
+CREATE TABLE Books (
+  BookID INTEGER PRIMARY KEY,
+  Title TEXT NOT NULL,
+  Author TEXT NOT NULL,
+  Genre TEXT
+);
+
+CREATE TABLE Loans (
+  LoanID INTEGER PRIMARY KEY,
+  StudentID INTEGER NOT NULL,
+  BookID INTEGER NOT NULL,
+  DateOut TEXT NOT NULL,
+  DateDue TEXT NOT NULL CHECK (DateDue >= DateOut),
+  DateReturned TEXT,
+  FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+  FOREIGN KEY (BookID) REFERENCES Books(BookID)
+);
