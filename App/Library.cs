@@ -21,8 +21,7 @@ static class Library
     public static void AddLoan(long studentId, long bookId, DateTime due)
     {
         using var conn = Db.Open();
-        using var cmd = Command(conn, "add_loan", ("@student", studentId), ("@book", bookId),
-            ("@out", Fmt(DateTime.Today)), ("@due", Fmt(due)));
+        using var cmd = Command(conn, "add_loan", ("@student", studentId), ("@book", bookId), ("@out", Fmt(DateTime.Today)), ("@due", Fmt(due)));
         cmd.ExecuteNonQuery();
     }
 
