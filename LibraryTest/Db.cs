@@ -1,5 +1,10 @@
 using Microsoft.Data.Sqlite;
 
+/*
+ * SQL cheat sheet for reference:
+ * https://coddy.tech/cheat-sheets/sql
+ */
+
 public static class Db
 {
     // the working directory is in the build folder, these files are not copyed in so backtrack
