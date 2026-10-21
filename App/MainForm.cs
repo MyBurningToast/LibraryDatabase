@@ -31,7 +31,6 @@ public partial class MainForm : Form
 
     void addButton_Click(object? sender, EventArgs e) => AddLoan();
     void returnButton_Click(object? sender, EventArgs e) => MarkReturned();
-    void refreshButton_Click(object? sender, EventArgs e) => RefreshAll();
     void searchStudentsButton_Click(object? sender, EventArgs e) => Search(books: false);
     void searchBooksButton_Click(object? sender, EventArgs e) => Search(books: true);
 
