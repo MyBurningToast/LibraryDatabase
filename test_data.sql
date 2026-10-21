@@ -6,7 +6,7 @@ INSERT INTO Students (StudentID, Name, YearLevel) VALUES
 (5, 'e', 13);
 
 INSERT INTO Books (BookID, Title, Author, Genre) VALUES
-(1, '', 'author_a', 'genre_a'),
+(1, 'book_a', 'author_a', 'genre_a'),
 (2, 'book_b', 'author_b', 'genre_b'),
 (3, 'book_c', 'author_c', 'genre_c'),
 (4, 'book_d', 'author_d', 'genre_d'),
