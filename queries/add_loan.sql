@@ -1,0 +1,1 @@
+INSERT INTO Loans (StudentID, BookID, DateOut, DateDue) VALUES (@student, @book, @out, @due);

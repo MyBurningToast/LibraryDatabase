@@ -1,0 +1,3 @@
+SELECT BookID, Title FROM Books
+WHERE BookID NOT IN (SELECT BookID FROM Loans WHERE DateReturned IS NULL)
+ORDER BY Title;
