@@ -51,7 +51,6 @@ partial class MainForm
         overdueLayout = new TableLayoutPanel();
         overdueHead = new TableLayoutPanel();
         overdueTitle = new Label();
-        refreshButton = new Button();
         overdueGrid = new DataGridView();
         overdueStudentCol = new DataGridViewTextBoxColumn();
         overdueBookCol = new DataGridViewTextBoxColumn();
@@ -92,22 +91,20 @@ partial class MainForm
         tabs.Controls.Add(searchTab);
         tabs.Dock = DockStyle.Fill;
         tabs.Location = new Point(0, 0);
-        tabs.Margin = new Padding(3, 4, 3, 4);
         tabs.Name = "tabs";
         tabs.Padding = new Point(18, 6);
         tabs.SelectedIndex = 0;
-        tabs.Size = new Size(1006, 747);
+        tabs.Size = new Size(880, 560);
         tabs.TabIndex = 0;
         // 
         // loansTab
         // 
         loansTab.BackColor = Color.White;
         loansTab.Controls.Add(loansLayout);
-        loansTab.Location = new Point(4, 35);
-        loansTab.Margin = new Padding(3, 4, 3, 4);
+        loansTab.Location = new Point(4, 30);
         loansTab.Name = "loansTab";
-        loansTab.Padding = new Padding(18, 21, 18, 21);
-        loansTab.Size = new Size(998, 708);
+        loansTab.Padding = new Padding(16, 16, 16, 16);
+        loansTab.Size = new Size(872, 526);
         loansTab.TabIndex = 0;
         loansTab.Text = "Loans";
         // 
@@ -121,8 +118,7 @@ partial class MainForm
         loansLayout.Controls.Add(outGrid, 0, 3);
         loansLayout.Controls.Add(returnButton, 0, 4);
         loansLayout.Dock = DockStyle.Fill;
-        loansLayout.Location = new Point(18, 21);
-        loansLayout.Margin = new Padding(3, 4, 3, 4);
+        loansLayout.Location = new Point(16, 16);
         loansLayout.Name = "loansLayout";
         loansLayout.RowCount = 5;
         loansLayout.RowStyles.Add(new RowStyle());
@@ -130,7 +126,7 @@ partial class MainForm
         loansLayout.RowStyles.Add(new RowStyle());
         loansLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
         loansLayout.RowStyles.Add(new RowStyle());
-        loansLayout.Size = new Size(962, 666);
+        loansLayout.Size = new Size(840, 494);
         loansLayout.TabIndex = 0;
         // 
         // loansInput
@@ -155,36 +151,36 @@ partial class MainForm
         loansInput.RowCount = 2;
         loansInput.RowStyles.Add(new RowStyle());
         loansInput.RowStyles.Add(new RowStyle());
-        loansInput.Size = new Size(962, 68);
+        loansInput.Size = new Size(840, 51);
         loansInput.TabIndex = 0;
         // 
         // studentLabel
         // 
         studentLabel.AutoSize = true;
         studentLabel.Location = new Point(0, 0);
-        studentLabel.Margin = new Padding(0, 0, 0, 5);
+        studentLabel.Margin = new Padding(0, 0, 0, 4);
         studentLabel.Name = "studentLabel";
-        studentLabel.Size = new Size(60, 20);
+        studentLabel.Size = new Size(48, 15);
         studentLabel.TabIndex = 0;
         studentLabel.Text = "Student";
         // 
         // bookLabel
         // 
         bookLabel.AutoSize = true;
-        bookLabel.Location = new Point(242, 0);
-        bookLabel.Margin = new Padding(0, 0, 0, 5);
+        bookLabel.Location = new Point(212, 0);
+        bookLabel.Margin = new Padding(0, 0, 0, 4);
         bookLabel.Name = "bookLabel";
-        bookLabel.Size = new Size(43, 20);
+        bookLabel.Size = new Size(34, 15);
         bookLabel.TabIndex = 1;
         bookLabel.Text = "Book";
         // 
         // dueLabel
         // 
         dueLabel.AutoSize = true;
-        dueLabel.Location = new Point(530, 0);
-        dueLabel.Margin = new Padding(0, 0, 0, 5);
+        dueLabel.Location = new Point(464, 0);
+        dueLabel.Margin = new Padding(0, 0, 0, 4);
         dueLabel.Name = "dueLabel";
-        dueLabel.Size = new Size(70, 20);
+        dueLabel.Size = new Size(54, 15);
         dueLabel.TabIndex = 2;
         dueLabel.Text = "Due date";
         // 
@@ -193,10 +189,10 @@ partial class MainForm
         studentBox.Anchor = AnchorStyles.Left;
         studentBox.DropDownStyle = ComboBoxStyle.DropDownList;
         studentBox.FormattingEnabled = true;
-        studentBox.Location = new Point(0, 32);
-        studentBox.Margin = new Padding(0, 0, 14, 0);
+        studentBox.Location = new Point(0, 23);
+        studentBox.Margin = new Padding(0, 0, 12, 0);
         studentBox.Name = "studentBox";
-        studentBox.Size = new Size(228, 28);
+        studentBox.Size = new Size(200, 23);
         studentBox.TabIndex = 3;
         // 
         // bookBox
@@ -204,10 +200,10 @@ partial class MainForm
         bookBox.Anchor = AnchorStyles.Left;
         bookBox.DropDownStyle = ComboBoxStyle.DropDownList;
         bookBox.FormattingEnabled = true;
-        bookBox.Location = new Point(242, 32);
-        bookBox.Margin = new Padding(0, 0, 14, 0);
+        bookBox.Location = new Point(212, 23);
+        bookBox.Margin = new Padding(0, 0, 12, 0);
         bookBox.Name = "bookBox";
-        bookBox.Size = new Size(274, 28);
+        bookBox.Size = new Size(240, 23);
         bookBox.TabIndex = 4;
         // 
         // dueBox
@@ -215,10 +211,10 @@ partial class MainForm
         dueBox.Anchor = AnchorStyles.Left;
         dueBox.CustomFormat = "dd/MM/yyyy";
         dueBox.Format = DateTimePickerFormat.Custom;
-        dueBox.Location = new Point(530, 33);
-        dueBox.Margin = new Padding(0, 0, 14, 0);
+        dueBox.Location = new Point(464, 23);
+        dueBox.Margin = new Padding(0, 0, 12, 0);
         dueBox.Name = "dueBox";
-        dueBox.Size = new Size(137, 27);
+        dueBox.Size = new Size(120, 23);
         dueBox.TabIndex = 5;
         // 
         // addButton
@@ -229,12 +225,12 @@ partial class MainForm
         addButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
         addButton.FlatStyle = FlatStyle.Flat;
         addButton.ForeColor = Color.White;
-        addButton.Location = new Point(681, 25);
+        addButton.Location = new Point(596, 19);
         addButton.Margin = new Padding(0);
-        addButton.MinimumSize = new Size(0, 43);
+        addButton.MinimumSize = new Size(0, 32);
         addButton.Name = "addButton";
-        addButton.Padding = new Padding(9, 0, 9, 0);
-        addButton.Size = new Size(112, 43);
+        addButton.Padding = new Padding(8, 0, 8, 0);
+        addButton.Size = new Size(98, 32);
         addButton.TabIndex = 6;
         addButton.Text = "Add loan";
         addButton.UseVisualStyleBackColor = false;
@@ -243,10 +239,10 @@ partial class MainForm
         // messageLabel
         // 
         messageLabel.AutoSize = true;
-        messageLabel.Location = new Point(0, 73);
-        messageLabel.Margin = new Padding(0, 5, 0, 5);
+        messageLabel.Location = new Point(0, 55);
+        messageLabel.Margin = new Padding(0, 4, 0, 4);
         messageLabel.Name = "messageLabel";
-        messageLabel.Size = new Size(13, 20);
+        messageLabel.Size = new Size(10, 15);
         messageLabel.TabIndex = 1;
         messageLabel.Text = " ";
         // 
@@ -254,10 +250,10 @@ partial class MainForm
         // 
         currentlyOutHeading.AutoSize = true;
         currentlyOutHeading.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-        currentlyOutHeading.Location = new Point(0, 109);
-        currentlyOutHeading.Margin = new Padding(0, 11, 0, 11);
+        currentlyOutHeading.Location = new Point(0, 82);
+        currentlyOutHeading.Margin = new Padding(0, 8, 0, 8);
         currentlyOutHeading.Name = "currentlyOutHeading";
-        currentlyOutHeading.Size = new Size(138, 28);
+        currentlyOutHeading.Size = new Size(111, 21);
         currentlyOutHeading.TabIndex = 2;
         currentlyOutHeading.Text = "Currently out";
         // 
@@ -270,15 +266,14 @@ partial class MainForm
         outGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         outGrid.Columns.AddRange(new DataGridViewColumn[] { outStudentCol, outBookCol, outOutCol, outDueCol });
         outGrid.Dock = DockStyle.Fill;
-        outGrid.Location = new Point(3, 152);
-        outGrid.Margin = new Padding(3, 4, 3, 4);
+        outGrid.Location = new Point(3, 114);
         outGrid.MultiSelect = false;
         outGrid.Name = "outGrid";
         outGrid.ReadOnly = true;
         outGrid.RowHeadersVisible = false;
         outGrid.RowHeadersWidth = 51;
         outGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        outGrid.Size = new Size(956, 459);
+        outGrid.Size = new Size(834, 339);
         outGrid.TabIndex = 3;
         // 
         // outStudentCol
@@ -317,12 +312,11 @@ partial class MainForm
         returnButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
         returnButton.FlatStyle = FlatStyle.Flat;
         returnButton.ForeColor = Color.FromArgb(26, 95, 180);
-        returnButton.Location = new Point(810, 619);
-        returnButton.Margin = new Padding(3, 4, 3, 4);
-        returnButton.MinimumSize = new Size(0, 43);
+        returnButton.Location = new Point(707, 459);
+        returnButton.MinimumSize = new Size(0, 32);
         returnButton.Name = "returnButton";
-        returnButton.Padding = new Padding(9, 0, 9, 0);
-        returnButton.Size = new Size(149, 43);
+        returnButton.Padding = new Padding(8, 0, 8, 0);
+        returnButton.Size = new Size(130, 32);
         returnButton.TabIndex = 4;
         returnButton.Text = "Mark returned";
         returnButton.UseVisualStyleBackColor = false;
@@ -332,11 +326,10 @@ partial class MainForm
         // 
         overdueTab.BackColor = Color.White;
         overdueTab.Controls.Add(overdueLayout);
-        overdueTab.Location = new Point(4, 35);
-        overdueTab.Margin = new Padding(3, 4, 3, 4);
+        overdueTab.Location = new Point(4, 30);
         overdueTab.Name = "overdueTab";
-        overdueTab.Padding = new Padding(18, 21, 18, 21);
-        overdueTab.Size = new Size(998, 708);
+        overdueTab.Padding = new Padding(16, 16, 16, 16);
+        overdueTab.Size = new Size(872, 526);
         overdueTab.TabIndex = 1;
         overdueTab.Text = "Overdue";
         // 
@@ -347,13 +340,12 @@ partial class MainForm
         overdueLayout.Controls.Add(overdueHead, 0, 0);
         overdueLayout.Controls.Add(overdueGrid, 0, 1);
         overdueLayout.Dock = DockStyle.Fill;
-        overdueLayout.Location = new Point(18, 21);
-        overdueLayout.Margin = new Padding(3, 4, 3, 4);
+        overdueLayout.Location = new Point(16, 16);
         overdueLayout.Name = "overdueLayout";
         overdueLayout.RowCount = 2;
         overdueLayout.RowStyles.Add(new RowStyle());
         overdueLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        overdueLayout.Size = new Size(962, 666);
+        overdueLayout.Size = new Size(840, 494);
         overdueLayout.TabIndex = 0;
         // 
         // overdueHead
@@ -363,14 +355,13 @@ partial class MainForm
         overdueHead.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
         overdueHead.ColumnStyles.Add(new ColumnStyle());
         overdueHead.Controls.Add(overdueTitle, 0, 0);
-        overdueHead.Controls.Add(refreshButton, 1, 0);
         overdueHead.Dock = DockStyle.Fill;
         overdueHead.Location = new Point(0, 0);
         overdueHead.Margin = new Padding(0);
         overdueHead.Name = "overdueHead";
         overdueHead.RowCount = 1;
         overdueHead.RowStyles.Add(new RowStyle());
-        overdueHead.Size = new Size(962, 50);
+        overdueHead.Size = new Size(840, 37);
         overdueHead.TabIndex = 0;
         // 
         // overdueTitle
@@ -378,30 +369,12 @@ partial class MainForm
         overdueTitle.Anchor = AnchorStyles.Left;
         overdueTitle.AutoSize = true;
         overdueTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-        overdueTitle.Location = new Point(0, 11);
-        overdueTitle.Margin = new Padding(0, 11, 0, 11);
+        overdueTitle.Location = new Point(0, 8);
+        overdueTitle.Margin = new Padding(0, 8, 0, 8);
         overdueTitle.Name = "overdueTitle";
-        overdueTitle.Size = new Size(180, 28);
+        overdueTitle.Size = new Size(145, 21);
         overdueTitle.TabIndex = 0;
         overdueTitle.Text = "Overdue loans (0)";
-        // 
-        // refreshButton
-        // 
-        refreshButton.AutoSize = true;
-        refreshButton.BackColor = Color.FromArgb(26, 95, 180);
-        refreshButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
-        refreshButton.FlatStyle = FlatStyle.Flat;
-        refreshButton.ForeColor = Color.White;
-        refreshButton.Location = new Point(864, 0);
-        refreshButton.Margin = new Padding(0);
-        refreshButton.MinimumSize = new Size(0, 43);
-        refreshButton.Name = "refreshButton";
-        refreshButton.Padding = new Padding(9, 0, 9, 0);
-        refreshButton.Size = new Size(98, 43);
-        refreshButton.TabIndex = 1;
-        refreshButton.Text = "Refresh";
-        refreshButton.UseVisualStyleBackColor = false;
-        refreshButton.Click += refreshButton_Click;
         // 
         // overdueGrid
         // 
@@ -412,15 +385,14 @@ partial class MainForm
         overdueGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         overdueGrid.Columns.AddRange(new DataGridViewColumn[] { overdueStudentCol, overdueBookCol, overdueDueCol, overdueDaysCol });
         overdueGrid.Dock = DockStyle.Fill;
-        overdueGrid.Location = new Point(3, 54);
-        overdueGrid.Margin = new Padding(3, 4, 3, 4);
+        overdueGrid.Location = new Point(3, 40);
         overdueGrid.MultiSelect = false;
         overdueGrid.Name = "overdueGrid";
         overdueGrid.ReadOnly = true;
         overdueGrid.RowHeadersVisible = false;
         overdueGrid.RowHeadersWidth = 51;
         overdueGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        overdueGrid.Size = new Size(956, 608);
+        overdueGrid.Size = new Size(834, 451);
         overdueGrid.TabIndex = 1;
         // 
         // overdueStudentCol
@@ -455,11 +427,10 @@ partial class MainForm
         // 
         searchTab.BackColor = Color.White;
         searchTab.Controls.Add(searchLayout);
-        searchTab.Location = new Point(4, 35);
-        searchTab.Margin = new Padding(3, 4, 3, 4);
+        searchTab.Location = new Point(4, 30);
         searchTab.Name = "searchTab";
-        searchTab.Padding = new Padding(18, 21, 18, 21);
-        searchTab.Size = new Size(998, 708);
+        searchTab.Padding = new Padding(16, 16, 16, 16);
+        searchTab.Size = new Size(872, 526);
         searchTab.TabIndex = 2;
         searchTab.Text = "Search";
         // 
@@ -471,14 +442,13 @@ partial class MainForm
         searchLayout.Controls.Add(searchTitle, 0, 1);
         searchLayout.Controls.Add(searchGrid, 0, 2);
         searchLayout.Dock = DockStyle.Fill;
-        searchLayout.Location = new Point(18, 21);
-        searchLayout.Margin = new Padding(3, 4, 3, 4);
+        searchLayout.Location = new Point(16, 16);
         searchLayout.Name = "searchLayout";
         searchLayout.RowCount = 3;
         searchLayout.RowStyles.Add(new RowStyle());
         searchLayout.RowStyles.Add(new RowStyle());
         searchLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        searchLayout.Size = new Size(962, 666);
+        searchLayout.Size = new Size(840, 494);
         searchLayout.TabIndex = 0;
         // 
         // searchInput
@@ -499,26 +469,26 @@ partial class MainForm
         searchInput.RowCount = 2;
         searchInput.RowStyles.Add(new RowStyle());
         searchInput.RowStyles.Add(new RowStyle());
-        searchInput.Size = new Size(962, 68);
+        searchInput.Size = new Size(840, 51);
         searchInput.TabIndex = 0;
         // 
         // queryLabel
         // 
         queryLabel.AutoSize = true;
         queryLabel.Location = new Point(0, 0);
-        queryLabel.Margin = new Padding(0, 0, 0, 5);
+        queryLabel.Margin = new Padding(0, 0, 0, 4);
         queryLabel.Name = "queryLabel";
-        queryLabel.Size = new Size(76, 20);
+        queryLabel.Size = new Size(60, 15);
         queryLabel.TabIndex = 0;
         queryLabel.Text = "Search for";
         // 
         // queryBox
         // 
         queryBox.Anchor = AnchorStyles.Left;
-        queryBox.Location = new Point(0, 33);
-        queryBox.Margin = new Padding(0, 0, 14, 0);
+        queryBox.Location = new Point(0, 23);
+        queryBox.Margin = new Padding(0, 0, 12, 0);
         queryBox.Name = "queryBox";
-        queryBox.Size = new Size(297, 27);
+        queryBox.Size = new Size(260, 23);
         queryBox.TabIndex = 1;
         // 
         // searchStudentsButton
@@ -529,12 +499,12 @@ partial class MainForm
         searchStudentsButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
         searchStudentsButton.FlatStyle = FlatStyle.Flat;
         searchStudentsButton.ForeColor = Color.White;
-        searchStudentsButton.Location = new Point(311, 25);
-        searchStudentsButton.Margin = new Padding(0, 0, 14, 0);
-        searchStudentsButton.MinimumSize = new Size(0, 43);
+        searchStudentsButton.Location = new Point(272, 19);
+        searchStudentsButton.Margin = new Padding(0, 0, 12, 0);
+        searchStudentsButton.MinimumSize = new Size(0, 32);
         searchStudentsButton.Name = "searchStudentsButton";
-        searchStudentsButton.Padding = new Padding(9, 0, 9, 0);
-        searchStudentsButton.Size = new Size(160, 43);
+        searchStudentsButton.Padding = new Padding(8, 0, 8, 0);
+        searchStudentsButton.Size = new Size(140, 32);
         searchStudentsButton.TabIndex = 2;
         searchStudentsButton.Text = "Search students";
         searchStudentsButton.UseVisualStyleBackColor = false;
@@ -548,12 +518,12 @@ partial class MainForm
         searchBooksButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
         searchBooksButton.FlatStyle = FlatStyle.Flat;
         searchBooksButton.ForeColor = Color.FromArgb(26, 95, 180);
-        searchBooksButton.Location = new Point(485, 25);
+        searchBooksButton.Location = new Point(424, 19);
         searchBooksButton.Margin = new Padding(0);
-        searchBooksButton.MinimumSize = new Size(0, 43);
+        searchBooksButton.MinimumSize = new Size(0, 32);
         searchBooksButton.Name = "searchBooksButton";
-        searchBooksButton.Padding = new Padding(9, 0, 9, 0);
-        searchBooksButton.Size = new Size(143, 43);
+        searchBooksButton.Padding = new Padding(8, 0, 8, 0);
+        searchBooksButton.Size = new Size(125, 32);
         searchBooksButton.TabIndex = 3;
         searchBooksButton.Text = "Search books";
         searchBooksButton.UseVisualStyleBackColor = false;
@@ -563,10 +533,10 @@ partial class MainForm
         // 
         searchTitle.AutoSize = true;
         searchTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-        searchTitle.Location = new Point(0, 79);
-        searchTitle.Margin = new Padding(0, 11, 0, 11);
+        searchTitle.Location = new Point(0, 59);
+        searchTitle.Margin = new Padding(0, 8, 0, 8);
         searchTitle.Name = "searchTitle";
-        searchTitle.Size = new Size(381, 28);
+        searchTitle.Size = new Size(305, 21);
         searchTitle.TabIndex = 1;
         searchTitle.Text = "Search loan history by student or book";
         // 
@@ -579,15 +549,14 @@ partial class MainForm
         searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         searchGrid.Columns.AddRange(new DataGridViewColumn[] { searchStudentCol, searchBookCol, searchOutCol, searchReturnedCol });
         searchGrid.Dock = DockStyle.Fill;
-        searchGrid.Location = new Point(3, 122);
-        searchGrid.Margin = new Padding(3, 4, 3, 4);
+        searchGrid.Location = new Point(3, 91);
         searchGrid.MultiSelect = false;
         searchGrid.Name = "searchGrid";
         searchGrid.ReadOnly = true;
         searchGrid.RowHeadersVisible = false;
         searchGrid.RowHeadersWidth = 51;
         searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        searchGrid.Size = new Size(956, 540);
+        searchGrid.Size = new Size(834, 400);
         searchGrid.TabIndex = 2;
         // 
         // searchStudentCol
@@ -620,13 +589,12 @@ partial class MainForm
         // 
         // MainForm
         // 
-        AutoScaleDimensions = new SizeF(8F, 20F);
+        AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(243, 243, 243);
-        ClientSize = new Size(1006, 747);
+        ClientSize = new Size(880, 560);
         Controls.Add(tabs);
-        Margin = new Padding(3, 4, 3, 4);
-        MinimumSize = new Size(866, 624);
+        MinimumSize = new Size(760, 478);
         Name = "MainForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Loan Manager";
@@ -678,7 +646,6 @@ partial class MainForm
     private System.Windows.Forms.TableLayoutPanel overdueLayout;
     private System.Windows.Forms.TableLayoutPanel overdueHead;
     private System.Windows.Forms.Label overdueTitle;
-    private System.Windows.Forms.Button refreshButton;
     private System.Windows.Forms.DataGridView overdueGrid;
     private System.Windows.Forms.DataGridViewTextBoxColumn overdueStudentCol;
     private System.Windows.Forms.DataGridViewTextBoxColumn overdueBookCol;
