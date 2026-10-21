@@ -1,0 +1,1 @@
+UPDATE Loans SET DateReturned = @date WHERE LoanID = @id;
