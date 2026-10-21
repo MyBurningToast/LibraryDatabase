@@ -109,7 +109,7 @@ public partial class MainForm : Form
 
     void Notify(string text, bool ok)
     {
-        messageLabel.ForeColor = ok ? Red : Green;
+        messageLabel.ForeColor = ok ? Green : Red;
         messageLabel.Text = text;
     }
 
