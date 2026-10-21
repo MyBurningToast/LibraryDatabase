@@ -238,6 +238,7 @@ partial class MainForm
         addButton.TabIndex = 6;
         addButton.Text = "Add loan";
         addButton.UseVisualStyleBackColor = false;
+        addButton.Click += addButton_Click;
         // 
         // messageLabel
         // 
@@ -325,6 +326,7 @@ partial class MainForm
         returnButton.TabIndex = 4;
         returnButton.Text = "Mark returned";
         returnButton.UseVisualStyleBackColor = false;
+        returnButton.Click += returnButton_Click;
         // 
         // overdueTab
         // 
@@ -399,6 +401,7 @@ partial class MainForm
         refreshButton.TabIndex = 1;
         refreshButton.Text = "Refresh";
         refreshButton.UseVisualStyleBackColor = false;
+        refreshButton.Click += refreshButton_Click;
         // 
         // overdueGrid
         // 
@@ -535,6 +538,7 @@ partial class MainForm
         searchStudentsButton.TabIndex = 2;
         searchStudentsButton.Text = "Search students";
         searchStudentsButton.UseVisualStyleBackColor = false;
+        searchStudentsButton.Click += searchStudentsButton_Click;
         // 
         // searchBooksButton
         // 
@@ -553,6 +557,7 @@ partial class MainForm
         searchBooksButton.TabIndex = 3;
         searchBooksButton.Text = "Search books";
         searchBooksButton.UseVisualStyleBackColor = false;
+        searchBooksButton.Click += searchBooksButton_Click;
         // 
         // searchTitle
         // 
@@ -625,6 +630,7 @@ partial class MainForm
         Name = "MainForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Loan Manager";
+        Load += MainForm_Load;
         tabs.ResumeLayout(false);
         loansTab.ResumeLayout(false);
         loansLayout.ResumeLayout(false);
