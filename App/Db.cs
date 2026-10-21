@@ -1,4 +1,4 @@
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 
 /*
  * SQL cheat sheet for reference:
@@ -7,7 +7,7 @@ using Microsoft.Data.Sqlite;
 
 public static class Db
 {
-    // the working directory is in the build folder, these files are not copyed in so backtrack
+    // the working directory is in the build folder, these files are not copied in so backtrack
     static readonly string Root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
     static readonly string DbPath = Path.Combine(Root, "library.db");
 
@@ -19,6 +19,12 @@ public static class Db
         // sqlite will only enforce FKs if this is on for every connection
         Run(conn, "PRAGMA foreign_keys = ON;");
         return conn;
+    }
+
+    // builds the db from schema.sql + test_data.sql if the file isn't there yet
+    public static void EnsureExists()
+    {
+        if (!File.Exists(DbPath)) Rebuild();
     }
 
     public static void Rebuild()
@@ -41,6 +47,6 @@ public static class Db
         cmd.ExecuteNonQuery();
     }
 
-    // helper to read sql from a file. the alternitive was embedding them as strings in the code
+    // helper to read sql from a file. the alternative was embedding them as strings in the code
     public static string Sql(string name) => File.ReadAllText(Path.Combine(Root, "queries", name + ".sql"));
 }

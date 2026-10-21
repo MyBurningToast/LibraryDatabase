@@ -1,30 +1,73 @@
 ﻿using System.Globalization;
+using Microsoft.Data.Sqlite;
 namespace App;
 
-record Loan(string Student, string Book, DateTime Out, DateTime Due)
+record Item(long Id, string Name);
+
+record Loan(long Id, string Student, string Book, DateTime Out, DateTime Due)
 {
-    public DateTime? Returned { get; set; }
+    public DateTime? Returned { get; init; }
 }
 
-// TESTING DATA
-// TODO: link to database
-class Library
+static class Library
 {
-    public List<string> Students { get; } = new() { "a aa", "b bb", "c cc", "d dd"};
+    public static List<Item> Students() => ReadItems("students");
+    public static List<Item> AvailableBooks() => ReadItems("books_available");
+    public static List<Loan> LoansOut() => ReadLoans("currently_out");
+    public static List<Loan> Overdue() => ReadLoans("overdue");
+    public static List<Loan> SearchStudents(string q) => ReadLoans("search_students", ("@q", $"%{q}%"));
+    public static List<Loan> SearchBooks(string q) => ReadLoans("search_books", ("@q", $"%{q}%"));
 
-    public List<string> Books { get; } = new() { "book_a", "book_b", "book_c" };
-
-    public List<Loan> Loans { get; } = new();
-
-    public static Library Fakedata()
+    public static void AddLoan(long studentId, long bookId, DateTime due)
     {
-        var lib = new Library();
-        DateTime D(string s) => DateTime.Parse(s, CultureInfo.InvariantCulture);
-        void Add(string who, string book, string o, string due, string? ret = null) =>
-            lib.Loans.Add(new Loan(who, book, D(o), D(due)) { Returned = ret is null ? null : D(ret) });
-
-        Add("a aa", "book_a", "2026-09-05", "2026-09-19");
-        Add("b bb", "book_b", "2026-09-10", "2026-09-24");
-        return lib;
+        using var conn = Db.Open();
+        using var cmd = Command(conn, "add_loan", ("@student", studentId), ("@book", bookId),
+            ("@out", Fmt(DateTime.Today)), ("@due", Fmt(due)));
+        cmd.ExecuteNonQuery();
     }
+
+    public static void MarkReturned(long loanId)
+    {
+        using var conn = Db.Open();
+        using var cmd = Command(conn, "mark_returned", ("@id", loanId), ("@date", Fmt(DateTime.Today)));
+        cmd.ExecuteNonQuery();
+    }
+
+    static List<Item> ReadItems(string file)
+    {
+        using var conn = Db.Open();
+        using var cmd = Command(conn, file);
+        using var r = cmd.ExecuteReader();
+        var list = new List<Item>();
+        while (r.Read()) list.Add(new Item(r.GetInt64(0), r.GetString(1)));
+        return list;
+    }
+
+    // columns must be: LoanID, student, book, DateOut, DateDue, DateReturned
+    static List<Loan> ReadLoans(string file, params (string, object)[] args)
+    {
+        using var conn = Db.Open();
+        using var cmd = Command(conn, file, args);
+        using var r = cmd.ExecuteReader();
+        var list = new List<Loan>();
+        while (r.Read())
+        {
+            list.Add(new Loan(r.GetInt64(0), r.GetString(1), r.GetString(2), Parse(r.GetString(3)), Parse(r.GetString(4)))
+            {
+                Returned = r.IsDBNull(5) ? null : Parse(r.GetString(5))
+            });
+        }
+        return list;
+    }
+
+    static SqliteCommand Command(SqliteConnection conn, string file, params (string, object)[] args)
+    {
+        var cmd = conn.CreateCommand();
+        cmd.CommandText = Db.Sql(file);
+        foreach (var (name, value) in args) cmd.Parameters.AddWithValue(name, value);
+        return cmd;
+    }
+
+    static string Fmt(DateTime d) => d.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+    static DateTime Parse(string s) => DateTime.ParseExact(s, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 }

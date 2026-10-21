@@ -5,7 +5,6 @@ public partial class MainForm : Form
     static readonly Color Green = Color.FromArgb(0x14, 0x61, 0x2F);
     static readonly Color Red = Color.FromArgb(0xA4, 0x00, 0x1E);
 
-    readonly Library lib = Library.Fakedata();
     readonly Font boldFont;
 
     public MainForm()
@@ -22,8 +21,9 @@ public partial class MainForm : Form
         base.OnLoad(e);
         if (DesignMode) return;
 
-        studentBox.DataSource = lib.Students.ToList();
-        bookBox.DataSource = lib.Books.ToList();
+        studentBox.DisplayMember = "Name";
+        bookBox.DisplayMember = "Name";
+        studentBox.DataSource = Library.Students();
         RefreshAll();
     }
 
@@ -39,7 +39,7 @@ public partial class MainForm : Form
 
     void AddLoan()
     {
-        if (studentBox.SelectedItem is not string who || bookBox.SelectedItem is not string book) return;
+        if (studentBox.SelectedItem is not Item who || bookBox.SelectedItem is not Item book) return;
         var due = dueBox.Value.Date;
 
         if (due <= DateTime.Today)
@@ -47,13 +47,8 @@ public partial class MainForm : Form
             Notify("Due date must be after today.", ok: false);
             return;
         }
-        if (lib.Loans.Any(l => l.Book == book && l.Returned is null))
-        {
-            Notify($"\"{book}\" is already out.", ok: false);
-            return;
-        }
 
-        lib.Loans.Add(new Loan(who, book, DateTime.Today, due));
+        Library.AddLoan(who.Id, book.Id, due);
         Notify("Loan added.", ok: true);
         RefreshAll();
     }
@@ -61,7 +56,7 @@ public partial class MainForm : Form
     void MarkReturned()
     {
         if (outGrid.CurrentRow?.Tag is not Loan loan) { Notify("Select a loan first.", ok: false); return; }
-        loan.Returned = DateTime.Today;
+        Library.MarkReturned(loan.Id);
         Notify($"\"{loan.Book}\" marked returned.", ok: true);
         RefreshAll();
     }
@@ -69,32 +64,28 @@ public partial class MainForm : Form
     void Search(bool books)
     {
         var q = queryBox.Text.Trim();
-        var hits = lib.Loans
-            .Where(l => (books ? l.Book : l.Student).Contains(q, StringComparison.OrdinalIgnoreCase))
-            .OrderByDescending(l => l.Out)
-            .ToList();
+        var hits = books ? Library.SearchBooks(q) : Library.SearchStudents(q);
 
         searchTitle.Text = $"Loan history for \"{q}\" ({hits.Count} result{(hits.Count == 1 ? "" : "s")})";
         searchGrid.Rows.Clear();
         foreach (var l in hits)
         {
             AddRow(searchGrid, l, l.Student, l.Book, Fmt(l.Out), l.Returned is { } r ? Fmt(r) : "-");
-
         }
     }
 
     void RefreshAll()
     {
+        // only books that not out
+        bookBox.DataSource = Library.AvailableBooks();
+
         outGrid.Rows.Clear();
-        foreach (var l in lib.Loans.Where(l => l.Returned is null).OrderBy(l => l.Out))
+        foreach (var l in Library.LoansOut())
         {
             AddRow(outGrid, l, l.Student, l.Book, Fmt(l.Out), Fmt(l.Due));
-        }    
+        }
 
-        var late = lib.Loans
-            .Where(l => l.Returned is null && l.Due.Date < DateTime.Today)
-            .OrderByDescending(DaysLate)
-            .ToList();
+        var late = Library.Overdue();
         overdueTitle.Text = $"Overdue loans ({late.Count})";
         overdueGrid.Rows.Clear();
         foreach (var l in late)
