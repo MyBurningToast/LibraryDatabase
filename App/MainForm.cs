@@ -2,8 +2,8 @@ namespace App;
 
 public partial class MainForm : Form
 {
-    static readonly Color Green = Color.FromArgb(0x14, 0x61, 0x2F);
-    static readonly Color Red = Color.FromArgb(0xA4, 0x00, 0x1E);
+    static readonly Color Green = Color.FromArgb(20, 97, 47);
+    static readonly Color Red = Color.FromArgb(164, 0, 30);
 
     readonly Font boldFont;
 
