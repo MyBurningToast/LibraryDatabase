@@ -1,0 +1,158 @@
+1. GETTING DATA (SELECT)
+
+SELECT Name, Age
+FROM Students;
+
+SELECT - what columns you want
+FROM - which table
+
+Get everything:
+SELECT * FROM Students;
+
+
+2. FILTERING (WHERE)
+
+SELECT *
+FROM Students
+WHERE Age > 15;
+
+operators (same as normal):
+= equal to
+!= not equal to
+> greater than
+< less than
+>= greater than or equal to
+<= less than or equal to
+
+AND
+OR
+
+example:
+WHERE Age > 15 AND YearLevel = 11;
+
+
+3. SORTING (ORDER BY)
+
+SELECT *
+FROM Students
+ORDER BY Name;
+
+ASC - smallest to largest (default)
+DESC - largest to smallest
+
+example:
+ORDER BY Age DESC;
+
+
+4. ADDING DATA (INSERT)
+
+INSERT INTO Students (Name, Age)
+VALUES ('Alex', 16);
+
+INSERT INTO table (columns)
+VALUES (values);
+
+
+5. CHANGING DATA (UPDATE)
+
+UPDATE Students
+SET Age = 17
+WHERE Name = 'Alex';
+
+UPDATE - which table
+SET - what to change
+WHERE - which rows to change
+
+IMPORTANT:
+Always check your WHERE.
+Without it, every row gets changed.
+
+
+6. DELETING DATA (DELETE)
+
+DELETE FROM Students
+WHERE Name = 'Alex';
+
+Deletes rows that match WHERE
+
+wihout WHERE, every row gets deleted
+
+
+7. SEARCHING TEXT (LIKE)
+
+SELECT *
+FROM Students
+WHERE Name LIKE '%alex%';
+
+% = any number of characters
+_ = exactly one character
+
+examples:
+'john%' = starts with john
+'%john' = ends with john
+'%john%' = contains john
+
+
+8. COMBINING TABLES (JOIN)
+
+SELECT Students.Name, Books.Title
+FROM Loans
+JOIN Students ON Loans.StudentID = Students.StudentID
+JOIN Books ON Loans.BookID = Books.BookID;
+
+JOIN combines rows from differnt tables
+
+ON = tells SQL which columns should match
+
+Example:
+Students.StudentID = Loans.StudentID
+
+Aliases are short names for tabls:
+
+FROM Students s
+JOIN Loans l ON s.StudentID = l.StudentID
+
+s = Students
+l = Loans
+
+
+9. CHECKING FOR NULL
+
+NULL = missing or unknown value
+
+rows with no age:
+WHERE Age IS NULL
+
+rows that have an age:
+WHERE Age IS NOT NULL 
+
+
+10. COUNTING AND GROUPING
+
+SELECT YearLevel, COUNT(*)
+FROM Students
+GROUP BY YearLevel;
+
+COUNT(*) = counts rows
+GROUP BY = puts rows into groups
+
+11. SUBQUERIES
+
+SELECT Name
+FROM Students
+WHERE StudentID IN (
+    SELECT StudentID
+    FROM Loans
+);
+
+A subquery is  query inside another query
+
+IN matches something in the list
+NOT IN does not match anything in the list
+
+
+
+
+
+
+
