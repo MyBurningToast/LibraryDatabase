@@ -1,16 +1,16 @@
-INSERT INTO Students (StudentID, Name, YearLevel) VALUES
-(1, 'a', 9),
-(2, 'b', 10),
-(3, 'c', 11),
-(4, 'd', 12),
-(5, 'e', 13);
+INSERT INTO Students (StudentID, Name) VALUES
+(1, 'a'),
+(2, 'b'),
+(3, 'c'),
+(4, 'd'),
+(5, 'e');
 
-INSERT INTO Books (BookID, Title, Author, Genre) VALUES
-(1, 'book_a', 'author_a', 'genre_a'),
-(2, 'book_b', 'author_b', 'genre_b'),
-(3, 'book_c', 'author_c', 'genre_c'),
-(4, 'book_d', 'author_d', 'genre_d'),
-(5, 'book_e', 'author_e', 'genre_e');
+INSERT INTO Books (BookID, Title, Author) VALUES
+(1, 'book_a', 'author_a'),
+(2, 'book_b', 'author_b'),
+(3, 'book_c', 'author_c'),
+(4, 'book_d', 'author_d'),
+(5, 'book_e', 'author_e');
 
 INSERT INTO Loans (LoanID, StudentID, BookID, DateOut, DateDue, DateReturned) VALUES
 (1, 1, 1, '2026-10-01', '2026-10-15', '2026-10-13'),
