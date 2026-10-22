@@ -150,8 +150,6 @@ A subquery is  query inside another query
 IN matches something in the list
 NOT IN does not match anything in the list
 
----------------------
-
 adds the book, title and author into table
 @id is parameter given by the c# side when creating the command (as tuples)
 INSERT INTO Books (BookID, Title, Author) VALUES (@id, @title, @author);
@@ -187,7 +185,6 @@ aliases are created in FROM or JOIN
 these pretty useful :)
 FROM Loan l
 JOIN Students s ON s.StudenID = l.StudentID
-
 
 
 
