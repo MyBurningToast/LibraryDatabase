@@ -1,3 +1,0 @@
-SELECT BookID, Title FROM Books
-WHERE BookID NOT IN (SELECT BookID FROM Loans)
-ORDER BY Title;
