@@ -34,18 +34,33 @@ static class Library
 
     public static bool AddStudent(long id, string name)
     {
-        return false;
+        using var conn = Db.Open();
+        using var cmd = Command(conn, "add_student", ("@id", id), ("@name", name));
+        return TryInsert(cmd);
     }
 
     public static bool AddBook(long id, string title, string author)
     {
-        return false;
+        using var conn = Db.Open();
+        using var cmd = Command(conn, "add_book", ("@id", id), ("@title", title), ("@author", author));
+        return TryInsert(cmd);
     }
 
     static bool TryInsert(SqliteCommand cmd)
     {
+        try
+        {
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        // 1555 is SQLITE_CONSTRAINT_PRIMARYKEY
+        // this error happens whne and INSERT or UPDATE op violates the tbales PK contraint (no duplicates)
+        catch (SqliteException e) when (e.SqliteExtendedErrorCode == 1555)
+        {
             return false;
+        }
     }
+
     static List<Item> ReadItems(string file)
     {
         using var conn = Db.Open();

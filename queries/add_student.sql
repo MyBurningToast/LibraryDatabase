@@ -1,0 +1,1 @@
+INSERT INTO Students (StudentID, Name) VALUES (@id, @name);
