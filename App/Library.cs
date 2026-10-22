@@ -67,7 +67,12 @@ static class Library
         using var cmd = Command(conn, file);
         using var r = cmd.ExecuteReader();
         var list = new List<Item>();
-        while (r.Read()) list.Add(new Item(r.GetInt64(0), r.GetString(1)));
+        // loop though database result set row by row r.Read() is ture if there is another row to prossess
+        while (r.Read())
+        {
+            // for every row found create a new Item instance (first and 2nd column)
+            list.Add(new Item(r.GetInt64(0), r.GetString(1)));
+        }
         return list;
     }
 
@@ -82,6 +87,7 @@ static class Library
         {
             list.Add(new Loan(r.GetInt64(0), r.GetString(1), r.GetString(2), Parse(r.GetString(3)), Parse(r.GetString(4)))
             {
+                // null means not reutrned yet
                 Returned = r.IsDBNull(5) ? null : Parse(r.GetString(5))
             });
         }
@@ -92,10 +98,14 @@ static class Library
     {
         var cmd = conn.CreateCommand();
         cmd.CommandText = Db.Sql(file);
-        foreach (var (name, value) in args) cmd.Parameters.AddWithValue(name, value);
+        foreach (var (name, value) in args)
+        {
+            cmd.Parameters.AddWithValue(name, value);
+        }
         return cmd;
     }
 
-    static string Fmt(DateTime d) => d.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+    // format dates as year-month-day this is beacsue SQLite doesnt have a date type, so doing this lets me do comparisions and sorting
+    static string Fmt(DateTime d) => d.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture); // culture info makes it so that its consistant no matter what region the users pc is set to
     static DateTime Parse(string s) => DateTime.ParseExact(s, "yyyy-MM-dd", CultureInfo.InvariantCulture);
 }
