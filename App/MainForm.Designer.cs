@@ -70,6 +70,11 @@ partial class MainForm
         searchOutCol = new DataGridViewTextBoxColumn();
         searchReturnedCol = new DataGridViewTextBoxColumn();
         addTab = new TabPage();
+        addLayout = new TableLayoutPanel();
+        studentPanel = new TableLayoutPanel();
+        bookPanel = new TableLayoutPanel();
+        studentHeading = new Label();
+        bookHeading = new Label();
         newStudentIdLabel = new Label();
         newStudentIdBox = new TextBox();
         newStudentNameLabel = new Label();
@@ -96,6 +101,9 @@ partial class MainForm
         searchInput.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
         addTab.SuspendLayout();
+        addLayout.SuspendLayout();
+        studentPanel.SuspendLayout();
+        bookPanel.SuspendLayout();
         SuspendLayout();
         // 
         // tabs
@@ -604,124 +612,239 @@ partial class MainForm
         // 
         // addTab
         // 
-        addTab.Controls.Add(newStudentIdLabel);
-        addTab.Controls.Add(newStudentIdBox);
-        addTab.Controls.Add(newStudentNameLabel);
-        addTab.Controls.Add(newStudentNameBox);
-        addTab.Controls.Add(addStudentButton);
-        addTab.Controls.Add(newBookIdLabel);
-        addTab.Controls.Add(newBookIdBox);
-        addTab.Controls.Add(newBookTitleLabel);
-        addTab.Controls.Add(newBookTitleBox);
-        addTab.Controls.Add(newBookAuthorLabel);
-        addTab.Controls.Add(newBookAuthorBox);
-        addTab.Controls.Add(addBookButton);
+        addTab.BackColor = Color.White;
+        addTab.Controls.Add(addLayout);
         addTab.Location = new Point(4, 30);
         addTab.Name = "addTab";
         addTab.Padding = new Padding(16);
         addTab.Size = new Size(872, 526);
         addTab.TabIndex = 3;
         addTab.Text = "Add";
-        addTab.UseVisualStyleBackColor = true;
+        // 
+        // addLayout
+        // 
+        addLayout.ColumnCount = 2;
+        addLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+        addLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+        addLayout.Controls.Add(studentPanel, 0, 0);
+        addLayout.Controls.Add(bookPanel, 1, 0);
+        addLayout.Dock = DockStyle.Fill;
+        addLayout.Location = new Point(16, 16);
+        addLayout.Name = "addLayout";
+        addLayout.RowCount = 1;
+        addLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+        addLayout.Size = new Size(840, 494);
+        addLayout.TabIndex = 0;
+        // 
+        // studentPanel
+        // 
+        studentPanel.AutoSize = true;
+        studentPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        studentPanel.ColumnCount = 1;
+        studentPanel.ColumnStyles.Add(new ColumnStyle());
+        studentPanel.Controls.Add(studentHeading, 0, 0);
+        studentPanel.Controls.Add(newStudentIdLabel, 0, 1);
+        studentPanel.Controls.Add(newStudentIdBox, 0, 2);
+        studentPanel.Controls.Add(newStudentNameLabel, 0, 3);
+        studentPanel.Controls.Add(newStudentNameBox, 0, 4);
+        studentPanel.Controls.Add(addStudentButton, 0, 5);
+        studentPanel.Dock = DockStyle.Top;
+        studentPanel.Location = new Point(0, 0);
+        studentPanel.Margin = new Padding(0, 0, 24, 0);
+        studentPanel.Name = "studentPanel";
+        studentPanel.RowCount = 6;
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.RowStyles.Add(new RowStyle());
+        studentPanel.Size = new Size(408, 150);
+        studentPanel.TabIndex = 0;
+        // 
+        // studentHeading
+        // 
+        studentHeading.AutoSize = true;
+        studentHeading.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        studentHeading.Location = new Point(0, 0);
+        studentHeading.Margin = new Padding(0, 0, 0, 8);
+        studentHeading.Name = "studentHeading";
+        studentHeading.Size = new Size(100, 21);
+        studentHeading.TabIndex = 0;
+        studentHeading.Text = "Add a student";
         // 
         // newStudentIdLabel
         // 
         newStudentIdLabel.AutoSize = true;
-        newStudentIdLabel.Location = new Point(16, 16);
+        newStudentIdLabel.Location = new Point(0, 0);
+        newStudentIdLabel.Margin = new Padding(0, 8, 0, 4);
         newStudentIdLabel.Name = "newStudentIdLabel";
         newStudentIdLabel.Size = new Size(100, 15);
-        newStudentIdLabel.TabIndex = 0;
+        newStudentIdLabel.TabIndex = 1;
         newStudentIdLabel.Text = "Student number";
         // 
         // newStudentIdBox
         // 
-        newStudentIdBox.Location = new Point(16, 36);
+        newStudentIdBox.Anchor = AnchorStyles.Left;
+        newStudentIdBox.Location = new Point(0, 0);
+        newStudentIdBox.Margin = new Padding(0);
         newStudentIdBox.Name = "newStudentIdBox";
-        newStudentIdBox.Size = new Size(200, 23);
-        newStudentIdBox.TabIndex = 1;
+        newStudentIdBox.Size = new Size(260, 23);
+        newStudentIdBox.TabIndex = 2;
         // 
         // newStudentNameLabel
         // 
         newStudentNameLabel.AutoSize = true;
-        newStudentNameLabel.Location = new Point(16, 76);
+        newStudentNameLabel.Location = new Point(0, 0);
+        newStudentNameLabel.Margin = new Padding(0, 8, 0, 4);
         newStudentNameLabel.Name = "newStudentNameLabel";
         newStudentNameLabel.Size = new Size(100, 15);
-        newStudentNameLabel.TabIndex = 2;
+        newStudentNameLabel.TabIndex = 3;
         newStudentNameLabel.Text = "Student name";
         // 
         // newStudentNameBox
         // 
-        newStudentNameBox.Location = new Point(16, 96);
+        newStudentNameBox.Anchor = AnchorStyles.Left;
+        newStudentNameBox.Location = new Point(0, 0);
+        newStudentNameBox.Margin = new Padding(0);
         newStudentNameBox.Name = "newStudentNameBox";
-        newStudentNameBox.Size = new Size(200, 23);
-        newStudentNameBox.TabIndex = 3;
+        newStudentNameBox.Size = new Size(260, 23);
+        newStudentNameBox.TabIndex = 4;
         // 
         // addStudentButton
         // 
-        addStudentButton.Location = new Point(16, 136);
+        addStudentButton.Anchor = AnchorStyles.Left;
+        addStudentButton.AutoSize = true;
+        addStudentButton.BackColor = Color.FromArgb(26, 95, 180);
+        addStudentButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
+        addStudentButton.FlatStyle = FlatStyle.Flat;
+        addStudentButton.ForeColor = Color.White;
+        addStudentButton.Location = new Point(0, 0);
+        addStudentButton.Margin = new Padding(0, 16, 0, 0);
+        addStudentButton.MinimumSize = new Size(0, 32);
         addStudentButton.Name = "addStudentButton";
-        addStudentButton.Size = new Size(120, 30);
-        addStudentButton.TabIndex = 4;
+        addStudentButton.Padding = new Padding(8, 0, 8, 0);
+        addStudentButton.Size = new Size(110, 32);
+        addStudentButton.TabIndex = 5;
         addStudentButton.Text = "Add student";
-        addStudentButton.UseVisualStyleBackColor = true;
+        addStudentButton.UseVisualStyleBackColor = false;
         addStudentButton.Click += addStudentButton_Click;
+        // 
+        // bookPanel
+        // 
+        bookPanel.AutoSize = true;
+        bookPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+        bookPanel.ColumnCount = 1;
+        bookPanel.ColumnStyles.Add(new ColumnStyle());
+        bookPanel.Controls.Add(bookHeading, 0, 0);
+        bookPanel.Controls.Add(newBookIdLabel, 0, 1);
+        bookPanel.Controls.Add(newBookIdBox, 0, 2);
+        bookPanel.Controls.Add(newBookTitleLabel, 0, 3);
+        bookPanel.Controls.Add(newBookTitleBox, 0, 4);
+        bookPanel.Controls.Add(newBookAuthorLabel, 0, 5);
+        bookPanel.Controls.Add(newBookAuthorBox, 0, 6);
+        bookPanel.Controls.Add(addBookButton, 0, 7);
+        bookPanel.Dock = DockStyle.Top;
+        bookPanel.Location = new Point(0, 0);
+        bookPanel.Margin = new Padding(24, 0, 0, 0);
+        bookPanel.Name = "bookPanel";
+        bookPanel.RowCount = 8;
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.RowStyles.Add(new RowStyle());
+        bookPanel.Size = new Size(408, 150);
+        bookPanel.TabIndex = 0;
+        // 
+        // bookHeading
+        // 
+        bookHeading.AutoSize = true;
+        bookHeading.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+        bookHeading.Location = new Point(0, 0);
+        bookHeading.Margin = new Padding(0, 0, 0, 8);
+        bookHeading.Name = "bookHeading";
+        bookHeading.Size = new Size(100, 21);
+        bookHeading.TabIndex = 0;
+        bookHeading.Text = "Add a book";
         // 
         // newBookIdLabel
         // 
         newBookIdLabel.AutoSize = true;
-        newBookIdLabel.Location = new Point(300, 16);
+        newBookIdLabel.Location = new Point(0, 0);
+        newBookIdLabel.Margin = new Padding(0, 8, 0, 4);
         newBookIdLabel.Name = "newBookIdLabel";
         newBookIdLabel.Size = new Size(100, 15);
-        newBookIdLabel.TabIndex = 5;
+        newBookIdLabel.TabIndex = 1;
         newBookIdLabel.Text = "Book id";
         // 
         // newBookIdBox
         // 
-        newBookIdBox.Location = new Point(300, 36);
+        newBookIdBox.Anchor = AnchorStyles.Left;
+        newBookIdBox.Location = new Point(0, 0);
+        newBookIdBox.Margin = new Padding(0);
         newBookIdBox.Name = "newBookIdBox";
-        newBookIdBox.Size = new Size(200, 23);
-        newBookIdBox.TabIndex = 6;
+        newBookIdBox.Size = new Size(260, 23);
+        newBookIdBox.TabIndex = 2;
         // 
         // newBookTitleLabel
         // 
         newBookTitleLabel.AutoSize = true;
-        newBookTitleLabel.Location = new Point(300, 76);
+        newBookTitleLabel.Location = new Point(0, 0);
+        newBookTitleLabel.Margin = new Padding(0, 8, 0, 4);
         newBookTitleLabel.Name = "newBookTitleLabel";
         newBookTitleLabel.Size = new Size(100, 15);
-        newBookTitleLabel.TabIndex = 7;
+        newBookTitleLabel.TabIndex = 3;
         newBookTitleLabel.Text = "Book title";
         // 
         // newBookTitleBox
         // 
-        newBookTitleBox.Location = new Point(300, 96);
+        newBookTitleBox.Anchor = AnchorStyles.Left;
+        newBookTitleBox.Location = new Point(0, 0);
+        newBookTitleBox.Margin = new Padding(0);
         newBookTitleBox.Name = "newBookTitleBox";
-        newBookTitleBox.Size = new Size(200, 23);
-        newBookTitleBox.TabIndex = 8;
+        newBookTitleBox.Size = new Size(260, 23);
+        newBookTitleBox.TabIndex = 4;
         // 
         // newBookAuthorLabel
         // 
         newBookAuthorLabel.AutoSize = true;
-        newBookAuthorLabel.Location = new Point(300, 136);
+        newBookAuthorLabel.Location = new Point(0, 0);
+        newBookAuthorLabel.Margin = new Padding(0, 8, 0, 4);
         newBookAuthorLabel.Name = "newBookAuthorLabel";
         newBookAuthorLabel.Size = new Size(100, 15);
-        newBookAuthorLabel.TabIndex = 9;
+        newBookAuthorLabel.TabIndex = 5;
         newBookAuthorLabel.Text = "Book author";
         // 
         // newBookAuthorBox
         // 
-        newBookAuthorBox.Location = new Point(300, 156);
+        newBookAuthorBox.Anchor = AnchorStyles.Left;
+        newBookAuthorBox.Location = new Point(0, 0);
+        newBookAuthorBox.Margin = new Padding(0);
         newBookAuthorBox.Name = "newBookAuthorBox";
-        newBookAuthorBox.Size = new Size(200, 23);
-        newBookAuthorBox.TabIndex = 10;
+        newBookAuthorBox.Size = new Size(260, 23);
+        newBookAuthorBox.TabIndex = 6;
         // 
         // addBookButton
         // 
-        addBookButton.Location = new Point(300, 196);
+        addBookButton.Anchor = AnchorStyles.Left;
+        addBookButton.AutoSize = true;
+        addBookButton.BackColor = Color.FromArgb(26, 95, 180);
+        addBookButton.FlatAppearance.BorderColor = Color.FromArgb(26, 95, 180);
+        addBookButton.FlatStyle = FlatStyle.Flat;
+        addBookButton.ForeColor = Color.White;
+        addBookButton.Location = new Point(0, 0);
+        addBookButton.Margin = new Padding(0, 16, 0, 0);
+        addBookButton.MinimumSize = new Size(0, 32);
         addBookButton.Name = "addBookButton";
-        addBookButton.Size = new Size(120, 30);
-        addBookButton.TabIndex = 11;
+        addBookButton.Padding = new Padding(8, 0, 8, 0);
+        addBookButton.Size = new Size(110, 32);
+        addBookButton.TabIndex = 7;
         addBookButton.Text = "Add book";
-        addBookButton.UseVisualStyleBackColor = true;
+        addBookButton.UseVisualStyleBackColor = false;
         addBookButton.Click += addBookButton_Click;
         // 
         // MainForm
@@ -756,7 +879,11 @@ partial class MainForm
         searchInput.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
         addTab.ResumeLayout(false);
-        addTab.PerformLayout();
+        addLayout.ResumeLayout(false);
+        studentPanel.ResumeLayout(false);
+        studentPanel.PerformLayout();
+        bookPanel.ResumeLayout(false);
+        bookPanel.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -816,4 +943,9 @@ partial class MainForm
     private Label newBookAuthorLabel;
     private TextBox newBookAuthorBox;
     private Button addBookButton;
+    private TableLayoutPanel addLayout;
+    private TableLayoutPanel studentPanel;
+    private TableLayoutPanel bookPanel;
+    private Label studentHeading;
+    private Label bookHeading;
 }
