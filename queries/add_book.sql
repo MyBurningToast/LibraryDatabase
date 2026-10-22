@@ -1,1 +1,1 @@
-INSERT INTO Books (BookID, Title, Author) VALUES (@id, @author, @title);
+INSERT INTO Books (BookID, Title, Author) VALUES (@id, @title, @author);
