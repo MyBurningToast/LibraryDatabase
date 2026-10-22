@@ -32,6 +32,20 @@ static class Library
         cmd.ExecuteNonQuery();
     }
 
+    public static bool AddStudent(long id, string name)
+    {
+        return false;
+    }
+
+    public static bool AddBook(long id, string title, string author)
+    {
+        return false;
+    }
+
+    static bool TryInsert(SqliteCommand cmd)
+    {
+            return false;
+    }
     static List<Item> ReadItems(string file)
     {
         using var conn = Db.Open();

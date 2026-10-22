@@ -69,6 +69,19 @@ partial class MainForm
         searchBookCol = new DataGridViewTextBoxColumn();
         searchOutCol = new DataGridViewTextBoxColumn();
         searchReturnedCol = new DataGridViewTextBoxColumn();
+        addTab = new TabPage();
+        newStudentIdLabel = new Label();
+        newStudentIdBox = new TextBox();
+        newStudentNameLabel = new Label();
+        newStudentNameBox = new TextBox();
+        addStudentButton = new Button();
+        newBookIdLabel = new Label();
+        newBookIdBox = new TextBox();
+        newBookTitleLabel = new Label();
+        newBookTitleBox = new TextBox();
+        newBookAuthorLabel = new Label();
+        newBookAuthorBox = new TextBox();
+        addBookButton = new Button();
         tabs.SuspendLayout();
         loansTab.SuspendLayout();
         loansLayout.SuspendLayout();
@@ -82,6 +95,7 @@ partial class MainForm
         searchLayout.SuspendLayout();
         searchInput.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
+        addTab.SuspendLayout();
         SuspendLayout();
         // 
         // tabs
@@ -89,6 +103,7 @@ partial class MainForm
         tabs.Controls.Add(loansTab);
         tabs.Controls.Add(overdueTab);
         tabs.Controls.Add(searchTab);
+        tabs.Controls.Add(addTab);
         tabs.Dock = DockStyle.Fill;
         tabs.Location = new Point(0, 0);
         tabs.Name = "tabs";
@@ -587,6 +602,128 @@ partial class MainForm
         searchReturnedCol.Name = "searchReturnedCol";
         searchReturnedCol.ReadOnly = true;
         // 
+        // addTab
+        // 
+        addTab.Controls.Add(newStudentIdLabel);
+        addTab.Controls.Add(newStudentIdBox);
+        addTab.Controls.Add(newStudentNameLabel);
+        addTab.Controls.Add(newStudentNameBox);
+        addTab.Controls.Add(addStudentButton);
+        addTab.Controls.Add(newBookIdLabel);
+        addTab.Controls.Add(newBookIdBox);
+        addTab.Controls.Add(newBookTitleLabel);
+        addTab.Controls.Add(newBookTitleBox);
+        addTab.Controls.Add(newBookAuthorLabel);
+        addTab.Controls.Add(newBookAuthorBox);
+        addTab.Controls.Add(addBookButton);
+        addTab.Location = new Point(4, 30);
+        addTab.Name = "addTab";
+        addTab.Padding = new Padding(16);
+        addTab.Size = new Size(872, 526);
+        addTab.TabIndex = 3;
+        addTab.Text = "Add";
+        addTab.UseVisualStyleBackColor = true;
+        // 
+        // newStudentIdLabel
+        // 
+        newStudentIdLabel.AutoSize = true;
+        newStudentIdLabel.Location = new Point(16, 16);
+        newStudentIdLabel.Name = "newStudentIdLabel";
+        newStudentIdLabel.Size = new Size(100, 15);
+        newStudentIdLabel.TabIndex = 0;
+        newStudentIdLabel.Text = "Student number";
+        // 
+        // newStudentIdBox
+        // 
+        newStudentIdBox.Location = new Point(16, 36);
+        newStudentIdBox.Name = "newStudentIdBox";
+        newStudentIdBox.Size = new Size(200, 23);
+        newStudentIdBox.TabIndex = 1;
+        // 
+        // newStudentNameLabel
+        // 
+        newStudentNameLabel.AutoSize = true;
+        newStudentNameLabel.Location = new Point(16, 76);
+        newStudentNameLabel.Name = "newStudentNameLabel";
+        newStudentNameLabel.Size = new Size(100, 15);
+        newStudentNameLabel.TabIndex = 2;
+        newStudentNameLabel.Text = "Student name";
+        // 
+        // newStudentNameBox
+        // 
+        newStudentNameBox.Location = new Point(16, 96);
+        newStudentNameBox.Name = "newStudentNameBox";
+        newStudentNameBox.Size = new Size(200, 23);
+        newStudentNameBox.TabIndex = 3;
+        // 
+        // addStudentButton
+        // 
+        addStudentButton.Location = new Point(16, 136);
+        addStudentButton.Name = "addStudentButton";
+        addStudentButton.Size = new Size(120, 30);
+        addStudentButton.TabIndex = 4;
+        addStudentButton.Text = "Add student";
+        addStudentButton.UseVisualStyleBackColor = true;
+        addStudentButton.Click += addStudentButton_Click;
+        // 
+        // newBookIdLabel
+        // 
+        newBookIdLabel.AutoSize = true;
+        newBookIdLabel.Location = new Point(300, 16);
+        newBookIdLabel.Name = "newBookIdLabel";
+        newBookIdLabel.Size = new Size(100, 15);
+        newBookIdLabel.TabIndex = 5;
+        newBookIdLabel.Text = "Book id";
+        // 
+        // newBookIdBox
+        // 
+        newBookIdBox.Location = new Point(300, 36);
+        newBookIdBox.Name = "newBookIdBox";
+        newBookIdBox.Size = new Size(200, 23);
+        newBookIdBox.TabIndex = 6;
+        // 
+        // newBookTitleLabel
+        // 
+        newBookTitleLabel.AutoSize = true;
+        newBookTitleLabel.Location = new Point(300, 76);
+        newBookTitleLabel.Name = "newBookTitleLabel";
+        newBookTitleLabel.Size = new Size(100, 15);
+        newBookTitleLabel.TabIndex = 7;
+        newBookTitleLabel.Text = "Book title";
+        // 
+        // newBookTitleBox
+        // 
+        newBookTitleBox.Location = new Point(300, 96);
+        newBookTitleBox.Name = "newBookTitleBox";
+        newBookTitleBox.Size = new Size(200, 23);
+        newBookTitleBox.TabIndex = 8;
+        // 
+        // newBookAuthorLabel
+        // 
+        newBookAuthorLabel.AutoSize = true;
+        newBookAuthorLabel.Location = new Point(300, 136);
+        newBookAuthorLabel.Name = "newBookAuthorLabel";
+        newBookAuthorLabel.Size = new Size(100, 15);
+        newBookAuthorLabel.TabIndex = 9;
+        newBookAuthorLabel.Text = "Book author";
+        // 
+        // newBookAuthorBox
+        // 
+        newBookAuthorBox.Location = new Point(300, 156);
+        newBookAuthorBox.Name = "newBookAuthorBox";
+        newBookAuthorBox.Size = new Size(200, 23);
+        newBookAuthorBox.TabIndex = 10;
+        // 
+        // addBookButton
+        // 
+        addBookButton.Location = new Point(300, 196);
+        addBookButton.Name = "addBookButton";
+        addBookButton.Size = new Size(120, 30);
+        addBookButton.TabIndex = 11;
+        addBookButton.Text = "Add book";
+        addBookButton.UseVisualStyleBackColor = true;
+        addBookButton.Click += addBookButton_Click;
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -618,6 +755,8 @@ partial class MainForm
         searchInput.ResumeLayout(false);
         searchInput.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
+        addTab.ResumeLayout(false);
+        addTab.PerformLayout();
         ResumeLayout(false);
     }
 
@@ -664,4 +803,17 @@ partial class MainForm
     private System.Windows.Forms.DataGridViewTextBoxColumn searchBookCol;
     private System.Windows.Forms.DataGridViewTextBoxColumn searchOutCol;
     private System.Windows.Forms.DataGridViewTextBoxColumn searchReturnedCol;
+    private TabPage addTab;
+    private Label newStudentIdLabel;
+    private TextBox newStudentIdBox;
+    private Label newStudentNameLabel;
+    private TextBox newStudentNameBox;
+    private Button addStudentButton;
+    private Label newBookIdLabel;
+    private TextBox newBookIdBox;
+    private Label newBookTitleLabel;
+    private TextBox newBookTitleBox;
+    private Label newBookAuthorLabel;
+    private TextBox newBookAuthorBox;
+    private Button addBookButton;
 }

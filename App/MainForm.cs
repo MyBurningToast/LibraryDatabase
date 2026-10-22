@@ -33,6 +33,8 @@ public partial class MainForm : Form
     void returnButton_Click(object? sender, EventArgs e) => MarkReturned();
     void searchStudentsButton_Click(object? sender, EventArgs e) => Search(books: false);
     void searchBooksButton_Click(object? sender, EventArgs e) => Search(books: true);
+    void addStudentButton_Click(object? sender, EventArgs e) => AddStudent();
+    void addBookButton_Click(object? sender, EventArgs e) => AddBook();
 
     // actions
 
@@ -58,6 +60,13 @@ public partial class MainForm : Form
         Library.MarkReturned(loan.Id);
         Notify($"\"{loan.Book}\" marked returned.", ok: true);
         RefreshAll();
+    }
+
+    void AddStudent()
+    {
+    }
+    void AddBook()
+    {
     }
 
     void Search(bool books)
