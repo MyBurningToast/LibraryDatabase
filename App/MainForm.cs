@@ -67,22 +67,22 @@ public partial class MainForm : Form
         var name = newStudentNameBox.Text.Trim();
         if (name == "" || !long.TryParse(newStudentIdBox.Text, out var id))
         {
-            MessageBox.Show("enter a name as a number");
+            MessageBox.Show("Enter a name and a numeric student number");
             return;
         }
 
         if (!Library.AddStudent(id, name))
         {
-            MessageBox.Show("student nuber already exists");
+            MessageBox.Show("A student with that number already exists");
             return;
         }
 
         newStudentIdBox.Clear();
         newStudentNameBox.Clear();
 
-        // student dropdown is only filled once in OnLoad so reload it
+        // student dropdown is only filled once in OnLoad, so reload it
         studentBox.DataSource = Library.Students();
-        MessageBox.Show("added");
+        MessageBox.Show("Student added");
     }
 
     void AddBook()
@@ -91,13 +91,13 @@ public partial class MainForm : Form
         var author = newBookAuthorBox.Text.Trim();
         if (title == "" || author == "" || !long.TryParse(newBookIdBox.Text, out var id))
         {
-            MessageBox.Show("error");
+            MessageBox.Show("Enter a title, an author and a numeric book id");
             return;
         }
 
         if (!Library.AddBook(id, title, author))
         {
-            MessageBox.Show("id taken");
+            MessageBox.Show("A book with that id already exists");
             return;
         }
 
