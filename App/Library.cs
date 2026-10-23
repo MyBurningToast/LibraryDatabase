@@ -39,11 +39,11 @@ static class Library
         return TryInsert(cmd, out wasCheckError);
     }
 
-    public static bool AddBook(long id, string title, string author, out bool wasCHeckError)
+    public static bool AddBook(long id, string title, string author, out bool wasCheckError)
     {
         using var conn = Db.Open();
         using var cmd = Command(conn, "add_book", ("@id", id), ("@title", title), ("@author", author));
-        return TryInsert(cmd, out wasCHeckError);
+        return TryInsert(cmd, out wasCheckError);
     }
 
     static bool TryInsert(SqliteCommand cmd, out bool wasCheckError)
