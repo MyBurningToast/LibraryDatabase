@@ -59,6 +59,12 @@ static class Library
         {
             return false;
         }
+        // this error code is for the CHECK constraint failures
+        catch (SqliteException e) when (e.SqliteExtendedErrorCode == 275)
+        {
+            return false;
+        }
+
     }
 
     static List<Item> ReadItems(string file)
