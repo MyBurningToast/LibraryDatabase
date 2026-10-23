@@ -7,8 +7,7 @@
 
 public static class Db
 {
-    // the working directory is in the build folder, these files are not copied in so backtrack
-    static readonly string Root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+    static readonly string Root = AppContext.BaseDirectory;
     static readonly string DbPath = Path.Combine(Root, "library.db");
 
     public static SqliteConnection Open()

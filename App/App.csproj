@@ -11,5 +11,11 @@
 <ItemGroup>
 	<PackageReference Include="Microsoft.Data.Sqlite" Version="*" />
 </ItemGroup>
+	
+<ItemGroup>
+  <Content Include="..\schema.sql" Link="schema.sql" CopyToOutputDirectory="PreserveNewest" />
+  <Content Include="..\test_data.sql" Link="test_data.sql" CopyToOutputDirectory="PreserveNewest" />
+  <Content Include="..\queries\*.sql" Link="queries\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
 
 </Project>
