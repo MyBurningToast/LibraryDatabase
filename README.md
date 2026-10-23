@@ -8,7 +8,7 @@ School library database app for NCEA Level 2 (AS91892). A Windows desktop app ma
 2. Unzip somewhere you can write to (not Program Files)
 3. Run `App.exe`
 
-`library.db` is created from `schema.sql` and `test_data.sql`. If you want to go back to a fresh database, just delete the `library.db` file and it will automaticly rebuild it.
+`library.db` is created from `schema.sql` and `test_data.sql`. If you want to go back to a fresh database, just delete the `library.db` file and it will automatically rebuild it.
 
 ## Build from source
 
