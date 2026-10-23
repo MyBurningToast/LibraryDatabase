@@ -86,8 +86,13 @@ public partial class MainForm : Form
         }
 
         // validate studen number
-        if (!Library.AddStudent(id, name))
+        if (!Library.AddStudent(id, name, out bool wasCheckError))
         {
+            if (wasCheckError)
+            {
+                MessageBox.Show("A student ID cannot be less than zero.");
+                return;
+            }
             MessageBox.Show("A student with that number already exists.");
             return;
         }
@@ -113,8 +118,13 @@ public partial class MainForm : Form
         }
 
         // validate book id
-        if (!Library.AddBook(id, title, author))
+        if (!Library.AddBook(id, title, author, out bool wasCheckError))
         {
+            if (wasCheckError)
+            {
+                MessageBox.Show("A book ID cannot be less than zero.");
+                return;
+            }
             MessageBox.Show("A book with that id already exists.");
             return;
         }

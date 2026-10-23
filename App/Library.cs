@@ -32,22 +32,23 @@ static class Library
         cmd.ExecuteNonQuery();
     }
 
-    public static bool AddStudent(long id, string name)
+    public static bool AddStudent(long id, string name, out bool wasCheckError)
     {
         using var conn = Db.Open();
         using var cmd = Command(conn, "add_student", ("@id", id), ("@name", name));
-        return TryInsert(cmd);
+        return TryInsert(cmd, out wasCheckError);
     }
 
-    public static bool AddBook(long id, string title, string author)
+    public static bool AddBook(long id, string title, string author, out bool wasCHeckError)
     {
         using var conn = Db.Open();
         using var cmd = Command(conn, "add_book", ("@id", id), ("@title", title), ("@author", author));
-        return TryInsert(cmd);
+        return TryInsert(cmd, out wasCHeckError);
     }
 
-    static bool TryInsert(SqliteCommand cmd)
+    static bool TryInsert(SqliteCommand cmd, out bool wasCheckError)
     {
+        wasCheckError = false;
         try
         {
             cmd.ExecuteNonQuery();
@@ -62,6 +63,7 @@ static class Library
         // this error code is for the CHECK constraint failures
         catch (SqliteException e) when (e.SqliteExtendedErrorCode == 275)
         {
+            wasCheckError = true;
             return false;
         }
 
