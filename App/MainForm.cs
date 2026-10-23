@@ -162,7 +162,15 @@ public partial class MainForm : Form
 
         foreach (var l in Library.LoansOut())
         {
-            AddRow(outGrid, l, l.Student, l.Book, Fmt(l.Out), Fmt(l.Due));
+            var row = AddRow(outGrid, l, l.Student, l.Book, Fmt(l.Out), Fmt(l.Due));
+
+            if (l.Due.Date < DateTime.Today)
+            {
+                // make overdue loans row red
+                row.DefaultCellStyle.ForeColor = Red;
+                row.DefaultCellStyle.SelectionForeColor = Red;
+                row.DefaultCellStyle.Font = boldFont;
+            }
         }
 
         var late = Library.Overdue(); // get all loans that past their due date
